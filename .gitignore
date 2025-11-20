@@ -1,0 +1,36 @@
+# Compiled files
+*.class
+*.jar
+target/
+out/
+bin/
+build/
+
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.eclipse/
+.DS_Store
+*.swp
+
+
+# Database files
+*.db
+*.sqlite
+database/
+
+# Log files
+*.log
+
+# Environment variables
+.env 
+
+# Dependecies 
+lib/javafx-sdk-*/ 
+node_modules/
+
+# OS files 
+Thumbs.db 
+
