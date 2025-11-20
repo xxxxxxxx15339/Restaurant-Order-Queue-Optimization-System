@@ -6,31 +6,31 @@ out/
 bin/
 build/
 
-
 # IDE files
 .idea/
 *.iml
 .vscode/
-.eclipse/
-.DS_Store
-*.swp
-
+.settings/
+.classpath
+.project
 
 # Database files
 *.db
 *.sqlite
-database/
+database/restaurant.db
 
-# Log files
+# Logs
 *.log
 
-# Environment variables
-.env 
+# Environment
+.env
 
-# Dependecies 
-lib/javafx-sdk-*/ 
-node_modules/
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
 
-# OS files 
-Thumbs.db 
-
+# OS files
+.DS_Store
+*~
+*.swp
