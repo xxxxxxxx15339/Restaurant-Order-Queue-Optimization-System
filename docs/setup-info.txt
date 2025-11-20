@@ -1,0 +1,6 @@
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /home/bazouil/.sdkman/candidates/maven/current
+Java version: 17.0.16, vendor: Arch Linux, runtime: /usr/lib/jvm/java-17-openjdk
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "6.16.10-arch1-1", arch: "amd64", family: "unix"
+Setup completed on: Thu Nov 20 20:32:32 UTC 2025
