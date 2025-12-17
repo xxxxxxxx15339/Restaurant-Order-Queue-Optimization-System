@@ -49,4 +49,11 @@ public class Staff {
     public void setStatus(StaffStatus status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        // Show "id - name" in ComboBoxes instead of the full object syntax
+        String idPart = staffId != null ? String.valueOf(staffId) : "-";
+        return name != null && !name.isBlank() ? idPart + " - " + name : idPart;
+    }
 }

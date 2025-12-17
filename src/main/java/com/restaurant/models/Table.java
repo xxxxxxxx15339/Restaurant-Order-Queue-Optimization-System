@@ -39,4 +39,10 @@ public class Table {
     public void setStatus(TableStatus status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        // Keep ComboBox display simple and readable: just the table id
+        return tableId != null ? String.valueOf(tableId) : "-";
+    }
 }

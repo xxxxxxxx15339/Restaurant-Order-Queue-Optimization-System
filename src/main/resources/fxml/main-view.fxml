@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:controller="com.restaurant.controllers.MainController"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1200.0" prefHeight="720.0"
+            styleClass="app-root">
+
+    <top>
+        <VBox styleClass="app-header" spacing="8.0">
+            <padding>
+                <Insets top="10.0" right="24.0" bottom="12.0" left="24.0"/>
+            </padding>
+            <children>
+                <HBox spacing="16.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Restaurant Order &amp; Queue Optimization System" styleClass="app-title"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+
+                <HBox spacing="8.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Select Scheduling Algorithm:" styleClass="alg-label"/>
+                        <ComboBox fx:id="algorithmCombo" prefWidth="220.0"/>
+                        <Button fx:id="applyAlgorithmButton"
+                                text="Apply Algorithm"
+                                styleClass="btn-apply"/>
+                        <Button fx:id="refreshOrdersButton"
+                                text="Refresh Orders"
+                                styleClass="btn-refresh"
+                                onAction="#handleRefreshOrders"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Button text="Add Order" onAction="#handleAddOrder"/>
+                    </children>
+                </HBox>
+
+                <Label text="Orders are processed according to the selected algorithm. This helps balance preparation time, priority, and fairness across all tables."
+                       wrapText="true"
+                       styleClass="header-description"/>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="8.0">
+            <padding>
+                <Insets top="8.0" right="24.0" bottom="0.0" left="24.0"/>
+            </padding>
+            <children>
+                <HBox spacing="12.0">
+                    <children>
+                        <Label text="Original Orders (Unsorted)" styleClass="section-title" HBox.hgrow="ALWAYS"/>
+                        <Label text="Optimized Order Queue" styleClass="section-title" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+
+                <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- Original orders panel -->
+                        <VBox spacing="4.0" HBox.hgrow="ALWAYS" styleClass="card">
+                            <children>
+                                <TableView fx:id="originalOrdersTable" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn text="Order #" prefWidth="80.0"/>
+                                        <TableColumn text="Table" prefWidth="70.0"/>
+                                        <TableColumn text="Priority" prefWidth="80.0"/>
+                                        <TableColumn text="Est. Time" prefWidth="90.0"/>
+                                        <TableColumn text="Amount" prefWidth="90.0"/>
+                                        <TableColumn text="Status" prefWidth="110.0"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+
+                        <!-- Optimized queue panel -->
+                        <VBox spacing="4.0" HBox.hgrow="ALWAYS" styleClass="card">
+                            <children>
+                                <TableView fx:id="optimizedOrdersTable" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn text="Order #" prefWidth="80.0"/>
+                                        <TableColumn text="Table" prefWidth="70.0"/>
+                                        <TableColumn text="Priority" prefWidth="80.0"/>
+                                        <TableColumn text="Est. Time" prefWidth="90.0"/>
+                                        <TableColumn text="Amount" prefWidth="90.0"/>
+                                        <TableColumn text="Status" prefWidth="110.0"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox>
+            <padding>
+                <Insets top="4.0" right="24.0" bottom="8.0" left="24.0"/>
+            </padding>
+            <children>
+                <HBox spacing="16.0">
+                    <children>
+                        <Label fx:id="originalStatsLabel" styleClass="footer-label"/>
+                        <Label fx:id="optimizedStatsLabel" styleClass="footer-label"/>
+                    </children>
+                </HBox>
+                <Label fx:id="statusMessageLabel" styleClass="footer-message"/>
+            </children>
+        </VBox>
+    </bottom>
+</BorderPane>

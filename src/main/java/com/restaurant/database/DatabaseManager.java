@@ -427,8 +427,10 @@ public class DatabaseManager {
                         VALUES (?, ?, ?, ?, ?, ?, ?)
                         """)) {
                     insertOrder(stmt, "Burger & Fries", 1, 1, 2, 15, 18.50, OrderStatus.PENDING);
-                    insertOrder(stmt, "Steak", 2, 2, 1, 25, 32.00, OrderStatus.IN_PROGRESS);
-                    insertOrder(stmt, "Pasta", 3, 3, 3, 20, 22.75, OrderStatus.READY);
+                    insertOrder(stmt, "Steak", 2, 2, 1, 25, 32.00, OrderStatus.PENDING);
+                    insertOrder(stmt, "Pasta", 3, 3, 3, 20, 22.75, OrderStatus.PENDING);
+                    insertOrder(stmt, "Family Platter", 2, 1, 4, 35, 48.90, OrderStatus.PENDING);
+                    insertOrder(stmt, "Salad & Soup Combo", 1, 2, 3, 12, 14.20, OrderStatus.PENDING);
                 }
             }
 

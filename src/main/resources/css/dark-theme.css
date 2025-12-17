@@ -1,0 +1,13 @@
+/* Optional darker variant – can be wired later for theme toggling */
+
+.app-root {
+    -fx-background-color: radial-gradient(radius 120%, #020617, #000000);
+}
+
+.card {
+    -fx-background-color: rgba(15, 23, 42, 0.98);
+}
+
+.app-header {
+    -fx-background-color: rgba(0, 0, 0, 0.85);
+}

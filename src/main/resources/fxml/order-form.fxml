@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.restaurant.controllers.OrderController"
+            prefWidth="480.0" prefHeight="420.0">
+
+    <center>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets top="16.0" right="20.0" bottom="12.0" left="20.0"/>
+            </padding>
+            <children>
+                <Label text="New Order" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <GridPane hgap="10.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" percentWidth="35.0"/>
+                        <ColumnConstraints halignment="LEFT" percentWidth="65.0"/>
+                    </columnConstraints>
+                    <children>
+                        <Label text="Table:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="tableCombo" prefWidth="220.0"
+                                  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Staff (optional):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="staffCombo" prefWidth="220.0"
+                                  GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Items:" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.valignment="TOP"/>
+                        <TextArea fx:id="itemsArea" prefRowCount="3" wrapText="true"
+                                  GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Priority (1-10):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Spinner fx:id="prioritySpinner" editable="true"
+                                 GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Label text="Est. Prep Time (min):" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <Spinner fx:id="estTimeSpinner" editable="true"
+                                 GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                        <Label text="Total Amount ($):" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <TextField fx:id="amountField"
+                                   promptText="e.g. 32.50"
+                                   GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                        <Label fx:id="errorLabel"
+                               textFill="red"
+                               GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                    </children>
+                </GridPane>
+
+                <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                    <children>
+                        <Button text="Cancel" onAction="#handleCancel"/>
+                        <Button text="Save Order" onAction="#handleSave" defaultButton="true"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
