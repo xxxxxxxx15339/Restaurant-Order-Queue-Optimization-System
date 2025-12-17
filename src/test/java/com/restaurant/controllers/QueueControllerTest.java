@@ -2,9 +2,14 @@ package com.restaurant.controllers;
 
 import com.restaurant.algorithms.RoundRobinScheduler;
 import com.restaurant.algorithms.SchedulingAlgorithm;
+import com.restaurant.database.DatabaseConnection;
 import com.restaurant.models.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +18,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class QueueControllerTest {
 
+    @TempDir
+    Path tempDir;
+
     private final QueueController controller = new QueueController();
+
+    @BeforeEach
+    void setUp() {
+        // Use a temp SQLite file so Jenkins/workspace paths don't matter
+        Path dbPath = tempDir.resolve("queue-test-" + System.nanoTime() + ".sqlite");
+        DatabaseConnection.setDatabaseUrl("jdbc:sqlite:" + dbPath.toAbsolutePath());
+        DatabaseConnection.getConnection(); // trigger schema creation
+    }
+
+    @AfterEach
+    void tearDown() {
+        DatabaseConnection.closeConnection();
+    }
 
     @Test
     void optimizeOrdersHandlesNullsGracefully() {
