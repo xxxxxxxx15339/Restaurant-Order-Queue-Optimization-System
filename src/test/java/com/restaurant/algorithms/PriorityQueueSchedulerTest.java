@@ -25,7 +25,20 @@ class PriorityQueueSchedulerTest {
                 result.stream().map(Order::getOrderId).toList());
     }
 
-    private Order buildOrder(int id, int priority, int estTime) {
+    @Test
+    void nullPriorityTreatedAsLowestPriority() {
+        List<Order> orders = new ArrayList<>();
+        orders.add(buildOrder(1, null, 10));  // unknown priority
+        orders.add(buildOrder(2, 1, 20));     // highest
+
+        SchedulingAlgorithm algo = new PriorityQueueScheduler();
+        List<Order> result = algo.schedule(orders);
+
+        assertEquals(List.of(2, 1),
+                result.stream().map(Order::getOrderId).toList());
+    }
+
+    private Order buildOrder(int id, Integer priority, int estTime) {
         Order o = new Order();
         o.setOrderId(id);
         o.setPriority(priority);

@@ -37,6 +37,13 @@ class RoundRobinSchedulerTest {
         assertEquals(1, orders.size());
     }
 
+    @Test
+    void emptyInputProducesEmptyOutput() {
+        SchedulingAlgorithm algo = new RoundRobinScheduler();
+        List<Order> result = algo.schedule(new ArrayList<>());
+        assertEquals(0, result.size());
+    }
+
     private Order buildOrder(int id) {
         Order o = new Order();
         o.setOrderId(id);

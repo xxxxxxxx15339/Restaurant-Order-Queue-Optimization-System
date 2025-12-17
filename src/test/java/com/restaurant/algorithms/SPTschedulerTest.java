@@ -38,7 +38,20 @@ class SPTschedulerTest {
                 orders.stream().map(Order::getOrderId).toList());
     }
 
-    private Order buildOrder(int id, int priority, int estTime) {
+    @Test
+    void ordersWithNullEstimatedTimeGoLast() {
+        List<Order> orders = new ArrayList<>();
+        orders.add(buildOrder(1, 1, null));  // no estimate
+        orders.add(buildOrder(2, 1, 10));
+
+        SchedulingAlgorithm algo = new SPTscheduler();
+        List<Order> result = algo.schedule(orders);
+
+        assertEquals(List.of(2, 1),
+                result.stream().map(Order::getOrderId).toList());
+    }
+
+    private Order buildOrder(int id, int priority, Integer estTime) {
         Order o = new Order();
         o.setOrderId(id);
         o.setPriority(priority);
